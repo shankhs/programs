@@ -1,0 +1,72 @@
+noremap <F1> <ESC>:tabprev <CR>
+vnoremap <F1> <ESC>:tabprev <CR>
+inoremap <F1> <ESC>
+
+noremap <F3> <ESC> :w <CR> :make <CR>
+inoremap <F3> <ESC> :w <CR> :make <CR>
+
+noremap <F8> <ESC> :w <CR> :!g++ -fsanitize=address -std=c++17 -DONPC -O2 -o %< % && ./%< < inp<CR>
+inoremap <F8> <ESC> :w <CR> :!g++ -fsanitize=address -std=c++17 -DONPC -O2 -o "%<" "%" && "./%<" < inp<CR>
+
+" -pthread
+
+noremap <F9> <ESC> :w <CR> :!g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -DONPC -O2 -o %< % && ./%< <CR>
+inoremap <F9> <ESC> :w <CR> :!g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -DONPC -O2 -o %< % && ./%< <CR>
+
+noremap <F10> <ESC> :w <CR> :!g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -DONPC -O2 -o %< % && ./%< < inp<CR>
+inoremap <F10> <ESC> :w <CR> :!g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -DONPC -O2 -o "%<" "%" && "./%<" < inp<CR>
+
+noremap <TAB> %
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'sirver/ultisnips'
+let g:UltiSnipsExpandTrigger = '<CR>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+"let g:UltiSnipsEditSplit="vertical"
+
+Plug 'honza/vim-snippets'
+
+Plug 'scrooloose/nerdtree'
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+"nnoremap <C-f> :NERDTreeFind<CR>
+
+Plug 'valloric/youcompleteme'
+
+Plug 'chiel92/vim-autoformat'
+noremap <F12> :Autoformat<CR>
+au BufWrite * :Autoformat
+
+call plug#end()
+
+set autoindent
+set autoread
+set cin
+set expandtab
+set guifont=Menlo\ Regular:h16
+set history=1000
+set hlsearch
+set ignorecase
+set incsearch
+set mousehide
+set noerrorbells
+set noswapfile
+set number
+set pastetoggle=
+set shiftwidth=4
+set smarttab
+set tabstop=4
+
+" Load all plugins now.
+" Plugins need to be added to runtimepath before helptags can be generated.
+packloadall
+" Load all of the helptags now, after plugins have been loaded.
+" All messages and errors will be ignored.
+silent! helptags ALL
+
+set visualbell
