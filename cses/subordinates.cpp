@@ -1,4 +1,3 @@
-snippet initcf "template for codeforces"
 #ifdef ONPC
 #define _GLIBCXX_DEBUG
 #endif
@@ -16,7 +15,22 @@ typedef long long ll;
 typedef long double ld;
 
 int solve() {
-    $0
+    std::unordered_map<int, vector<int> > emp_report;
+    int n;
+    if (!(cin >> n)) {
+        return 1;
+    }
+    vector<int> boss;
+    for (int i = 0; i < n; ++i) {
+        int vi;
+        cin >> vi;
+        boss.push_back(vi);
+        if(emp_report.find(vi)==emp_report.end()) {
+            emp_report[vi]={};
+        }
+        emp_report[vi].push_back(i+2);
+    }
+    solve();
     return 0;
 }
 
@@ -28,37 +42,3 @@ int32_t main() {
     cerr << endl << "finished in " << clock() * 1.0 / CLOCKS_PER_SEC << " sec" << endl;
 #endif
 }
-endsnippet
-
-snippet for "for"
-for (int ${1:i} = 0; $1 < ${2:n}; $1++) {
-    $0
-}
-endsnippet
-
-snippet read "read first variable"
-${1:int} ${2:n};
-if (!(cin >> $2)) {
-    return 1;
-}
-$0
-endsnippet
-
-snippet readv "read a vector"
-vector<${1:int}> ${2:v}
-for (int i = 0; i < ${3:n}; ++i) {
-    $1 vi;
-    cin >> vi;
-    $2.push_back(vi);
-}
-endsnippet
-
-snippet { "block"
-{
-    $0
-}
-endsnippet
-
-snippet sortv "sort a vector"
-sort(${1:v}.begin(), ${1:v}.end());
-endsnippet
